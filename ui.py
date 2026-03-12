@@ -11,6 +11,7 @@ class QuizInterface:
         self.window = Tk()
         self.window.minsize(700,500)
         self.window.config(bg=BG_COLOR, padx=30, pady=30)
+        self.window.title("Quizzler")
 
         self.values = Attributes(0, 0)
         self.question_bank = fetch_questions()
