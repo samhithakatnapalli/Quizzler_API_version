@@ -16,7 +16,7 @@ class QuizInterface:
         self.question_bank = fetch_questions()
 
         with open('highscore.txt') as file:
-            self.highscore = int(file.read())
+            self.highscore = file.read()
 
         self.question = ''
         self.answers = ''
@@ -31,7 +31,7 @@ class QuizInterface:
 
         self.score_text = Label(self.window,
                                 text=f"Score: {self.values.score} | Question {self.values.question_number}/{len(self.question_bank)}"
-                                 f" | High Score: {self.highscore}",
+                                 f" | {self.highscore}",
                                 font=(FONT, 15, "bold"), bg=BG_COLOR)
         self.score_text.grid(row=0, column=0, padx=50, columnspan=3, sticky=W + E)
 
@@ -73,7 +73,7 @@ class QuizInterface:
             self.canvas.itemconfig(self.question_text, text=self.question)
             self.values.question_number += 1
             self.score_text.config(text=f"Score: {self.values.score} | Question {self.values.question_number}/{len(self.question_bank)}"
-                                        f" | High Score: {self.highscore}")
+                                        f" | {self.highscore}")
         else:
             self.canvas.itemconfig(self.question_text, text=f"Yay! You've finished the quiz.")
             self.right_button.config(state='disabled')
@@ -97,14 +97,14 @@ class QuizInterface:
     def update_score(self):
         self.values.score += 1
         self.score_text.config(text=f"Score: {self.values.score} | Question {self.values.question_number}/{len(self.question_bank)}"
-                                    f" | High Score: {self.highscore}")
+                                    f" | {self.highscore}")
 
     def restart(self):
         self.canvas.itemconfig(self.start_quiz, state='normal')
         self.values.score = 0
         self.values.question_number = 0
         self.score_text.config(text=f"Score: {self.values.score} | Question {self.values.question_number}/{len(self.question_bank)}"
-                                    f" | High Score: {self.highscore}")
+                                    f" | {self.highscore}")
         self.canvas.itemconfig(self.question_text, text='')
         self.right_button.config(state='disabled')
         self.wrong_button.config(state='disabled')
