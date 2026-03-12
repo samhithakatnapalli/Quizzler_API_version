@@ -36,7 +36,7 @@ This project fetches real-time True/False trivia questions and presents them in 
 
 ### Final Screen
 
-![Final Screen](screenshots/final_screen.png)
+![Final Screen](screenshots/finish_screen.png)
 
 ---
 
